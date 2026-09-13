@@ -18,6 +18,15 @@
 - **诡异 bug 分析**：18 个经典案例 + **反直觉陷阱专章**（vertical-align 真相、inline-block 基线、line-height、absolute 拉仇恨……）
 - **静态诊断脚本**：`scripts/check-css.mjs` 零依赖扫描 CSS/HTML，按「现象→根因→修复」输出报告
 
+## 两种使用场景
+
+| 阶段 | 典型场景 | 主要用到 |
+|------|---------|---------|
+| **生成 / 实现** | 新写或修改 CSS 布局、按设计稿实现组件 | `best-practices.md` + `pitfalls.md` + 写完跑 `check-css.mjs` 自检 |
+| **评审 / 调试** | 样式不生效、布局错乱、层级/对齐等疑难问题 | `css-mechanisms.md` + `common-bugs.md` + `debugging.md` + 脚本 |
+
+生成阶段的关键动作是「**写完即自检**」：`node scripts/check-css.mjs <刚写的文件>`，把低级错误挡在提交前。
+
 ## 目录结构
 
 ```
@@ -59,9 +68,9 @@ git clone https://github.com/<你的用户名>/zhangxinxu-css.git
 
 ## 使用
 
-- 重启 pi 后，agent 会在遇到 CSS 疑难问题时自动加载
+- 重启 pi 后，agent 在**编写 CSS 布局**或**排查 CSS 疑难问题**时会自动加载
 - 也可手动触发：`/skill:zhangxinxu-css`
-- 直接提问亦可，例如：_"为什么这个 z-index 不管用？"_、_"帮我分析这个布局错乱"_
+- 直接提问亦可，例如：_"帮我实现这个卡片布局"_、_"为什么这个 z-index 不管用？"_、_"分析这个布局错乱"_
 
 ## 静态自检脚本
 
